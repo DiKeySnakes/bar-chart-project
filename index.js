@@ -78,12 +78,17 @@ const generateBars = () => {
     .attr('y', (item) => {
       return height - padding - heightScale(item[1]);
     })
-    .on('mouseover', (item) => {
+    .on('mouseover', (e) => {
+      const target = e.target;
       tooltip.transition().style('visibility', 'visible');
 
-      tooltip.text(item[0] + ' $' + item[1] + ' Billion');
+      tooltip.text(
+        target.dataset.date + ' $' + target.dataset.gdp + ' Billion'
+      );
 
-      document.querySelector('#tooltip').setAttribute('data-date', item[0]);
+      document
+        .querySelector('#tooltip')
+        .setAttribute('data-date', target.dataset.date);
     })
     .on('mouseout', () => {
       tooltip.transition().style('visibility', 'hidden');
