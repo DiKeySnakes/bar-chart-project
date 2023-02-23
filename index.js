@@ -85,7 +85,7 @@ const generateBars = () => {
 
       document.querySelector('#tooltip').setAttribute('data-date', item[0]);
     })
-    .on('mouseout', (item) => {
+    .on('mouseout', () => {
       tooltip.transition().style('visibility', 'hidden');
     });
 };
